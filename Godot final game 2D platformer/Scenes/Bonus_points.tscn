@@ -1,0 +1,35 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Images/Spnning Orb/Yellow/frame 2.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Bonus_points_Script.gd" type="Script" id=2]
+[ext_resource path="res://Images/Spnning Orb/Yellow/frame 6.png" type="Texture" id=3]
+[ext_resource path="res://Images/Spnning Orb/Yellow/frame 4.png" type="Texture" id=4]
+[ext_resource path="res://Images/Spnning Orb/Yellow/frame 1.png" type="Texture" id=5]
+[ext_resource path="res://Images/Spnning Orb/Yellow/frame 5.png" type="Texture" id=6]
+[ext_resource path="res://Images/Spnning Orb/Yellow/frame 3.png" type="Texture" id=7]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 1 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 32, 32 )
+
+[node name="Bonus_points" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="Points" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 3.8147e-06 )
+scale = Vector2( 0.201258, 0.201258 )
+frames = SubResource( 6 )
+frame = 2
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 5 )
+
+[connection signal="body_entered" from="." to="." method="_on_Bonus_points_body_entered"]

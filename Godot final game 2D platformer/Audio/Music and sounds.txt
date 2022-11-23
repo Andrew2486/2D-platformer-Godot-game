@@ -1,0 +1,27 @@
+NoteDefender - Gundatsch
+https://opengameart.org/content/note-defender-menu
+Menu music
+
+Inner Core - Gundatsch
+https://opengameart.org/content/inner-core
+https://creativecommons.org/licenses/by/3.0/
+Level 1
+
+Misanthropy - Gundatsch
+https://opengameart.org/content/misanthropy
+Level 2
+
+sfx_pick(Pickup_item) - Blender Foundation
+https://opengameart.org/content/pick-up-item-yo-frankie
+
+coin(pie pickup) - Fupi
+https://opengameart.org/content/plingy-coin
+
+Death - Doom
+http://www.wolfensteingoodies.com/archives/olddoom/sounds/dspldeth.wav
+
+Powerup - Doom
+http://www.wolfensteingoodies.com/archives/olddoom/sounds/dsgetpow.wav
+
+Secret_Room - Doom
+http://www.wolfensteingoodies.com/archives/olddoom/sounds/dspstart.wav

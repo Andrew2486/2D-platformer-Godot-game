@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/On_Death_Screen.wav-a43851da02f44cdc25f5579a6067aa28.sample"
+
+[deps]
+
+source_file="res://Audio/On_Death_Screen.wav"
+dest_files=[ "res://.import/On_Death_Screen.wav-a43851da02f44cdc25f5579a6067aa28.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/misanthropy.ogg-47379e0b8d2c55f1f505eef0f8a0cb40.oggstr"
+
+[deps]
+
+source_file="res://Audio/misanthropy.ogg"
+dest_files=[ "res://.import/misanthropy.ogg-47379e0b8d2c55f1f505eef0f8a0cb40.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

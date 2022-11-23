@@ -1,0 +1,94 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Images/Dag/Run3.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Player_script.gd" type="Script" id=2]
+[ext_resource path="res://Images/Dag/Run0.png" type="Texture" id=3]
+[ext_resource path="res://Images/Dag/Run1.png" type="Texture" id=4]
+[ext_resource path="res://Images/Dag/Run2.png" type="Texture" id=5]
+[ext_resource path="res://Images/Dag/Run4.png" type="Texture" id=6]
+[ext_resource path="res://Images/Dag/Run5.png" type="Texture" id=7]
+[ext_resource path="res://Images/Dag/Idle0.png" type="Texture" id=8]
+[ext_resource path="res://Images/Dag/Fall0.png" type="Texture" id=9]
+[ext_resource path="res://Images/Dag/Fire2.png" type="Texture" id=10]
+[ext_resource path="res://Images/Dag/Fire0.png" type="Texture" id=11]
+[ext_resource path="res://Images/Dag/Jump0.png" type="Texture" id=12]
+[ext_resource path="res://Images/Dag/Fire1.png" type="Texture" id=13]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 29 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "Static",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "Fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "Run",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 3 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "Fire",
+"speed": 5.0
+} ]
+
+[node name="Player" type="KinematicBody2D"]
+collision_mask = 0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 3 )
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "Fall"
+playing = true
+
+[node name="Fire_rate" type="Timer" parent="."]
+one_shot = true
+
+[node name="Rapid_Fire_Timmer" type="Timer" parent="."]
+wait_time = 20.0
+
+[connection signal="timeout" from="Fire_rate" to="." method="_on_Fire_rate_timeout"]
+[connection signal="timeout" from="Rapid_Fire_Timmer" to="." method="_on_Rapid_Fire_Timmer_timeout"]

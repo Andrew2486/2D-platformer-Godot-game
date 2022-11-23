@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scripts/Green_demon_Pitchfork_ATK_script.gd" type="Script" id=1]
+[ext_resource path="res://Images/Imps/green/attack - pitchfork.png" type="Texture" id=2]
+[ext_resource path="res://Audio/Death.wav" type="AudioStream" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 64, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 128, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 192, 64, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "Green_Demon_walk_attack",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 13.5, 18 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 14.5, 19 )
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 494.0
+
+[node name="Green_demon_Pitchfork_ATK" type="KinematicBody2D"]
+collision_layer = 0
+collision_mask = 5
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 5 )
+animation = "Green_Demon_walk_attack"
+frame = 2
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 5.5, 1 )
+shape = SubResource( 6 )
+
+[node name="Life_remover" type="Area2D" parent="."]
+collision_layer = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Life_remover"]
+position = Vector2( 5.5, 1 )
+shape = SubResource( 7 )
+
+[node name="Area_of_sight" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area_of_sight"]
+shape = SubResource( 8 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Rays" type="Node2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="Rays"]
+enabled = true
+collision_mask = 5
+
+[connection signal="body_entered" from="Life_remover" to="." method="_on_Life_remover_body_entered"]
+[connection signal="body_entered" from="Area_of_sight" to="." method="_on_Area_of_sight_body_entered"]
+[connection signal="body_exited" from="Area_of_sight" to="." method="_on_Area_of_sight_body_exited"]
